@@ -373,7 +373,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .hero h1 { order: 2; margin-bottom: 17px; font-size: clamp(2.9rem, 12vw, 5rem); }
   .hero-description { order: 3; max-width: 470px; margin: 0 auto; font-size: 1rem; line-height: 1.6; }
   .hero-actions { order: 5; gap: 8px; }
-  .hero-actions .button { min-width: 175px; }
+  .hero-actions .button { min-width: 0; padding: 0 14px; }
   .hero-signature { order: 6; margin-top: 24px; }
   .hero-art { position: relative; z-index: 1; right: auto; bottom: auto; width: min(100%, 380px); height: clamp(300px, 90vw, 390px); min-height: 0; justify-self: center; order: 4; margin: 12px auto 14px; opacity: 1; }
   .hero-aura { width: 90%; }
