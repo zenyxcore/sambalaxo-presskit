@@ -384,10 +384,13 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .hero-index { right: 7%; bottom: -5px; width: 125px; }
   .scroll-cue { display: none; }
   .artist, .identity, .rider { padding: 82px 22px 80px; text-align: center; }
+  .artist { padding-bottom: 38px; }
+  .identity { padding-top: 64px; }
   .section-kicker, .artist-copy .eyebrow, .identity-copy .eyebrow, .rider-copy .eyebrow { justify-content: center; }
   .section-kicker { margin-bottom: 30px; }
   .artist-layout { gap: 20px; }
   .identity-layout, .rider-layout { gap: 35px; }
+  .artist-copy { order: -1; }
   .artist-copy .eyebrow { margin-bottom: 10px; }
   .artist-copy, .identity-copy, .rider-copy { max-width: 540px; margin: 0 auto; }
   .artist h2, .identity h2, .rider h2 { font-size: clamp(2.65rem, 10.8vw, 4.9rem); }
