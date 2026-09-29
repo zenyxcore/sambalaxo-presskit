@@ -24,6 +24,7 @@
       <symbol id="icon-audio" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
       <symbol id="icon-video" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 8 6 4-6 4V8Z"/></symbol>
       <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+      <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"/></symbol>
       <symbol id="icon-record" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M12 3v3m0 12v3"/></symbol>
       <symbol id="icon-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></symbol>
       <symbol id="icon-sunset" viewBox="0 0 24 24"><path d="M3 19h18M5 15h14M8 15a4 4 0 0 1 8 0M12 3v3M4.5 7l2 2m13-2-2 2"/></symbol>
@@ -85,8 +86,8 @@
         <div class="artist-layout">
           <div class="artist-photo-wrap reveal">
             <div class="artist-photo-glow"></div>
-            <img src="/assets/reinaldinho.webp" alt="Retrato de Reinaldinho, artista do Sambalaxo" loading="lazy" />
-            <span class="photo-label">REINALDINHO <i>•</i> SAMBALAXO</span>
+            <img src="/assets/reinaldinho-show.webp" alt="Reinaldinho cantando com a identidade visual SX" loading="lazy" />
+            <div class="hero-stamp artist-stamp" aria-label="12 anos de carreira"><span>CARREIRA</span><strong>12</strong><span>ANOS</span></div>
           </div>
           <div class="artist-copy">
             <p class="eyebrow reveal">O show do Sambalaxo com Reinaldinho</p>
@@ -171,12 +172,12 @@
           <div class="download-card reveal">
             <div class="resource-kicker"><span class="resource-spark"></span> ACERVO DE DIVULGAÇÃO</div>
             <h3>Materiais do Sambalaxo</h3>
-            <p>Cada material terá seu próprio acesso. Os links serão ativados assim que estiverem disponíveis.</p>
-            <div class="material-grid" aria-label="Materiais para divulgação, links em breve">
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-photo" /></svg></span><strong>Fotos</strong><span class="material-detail">Imagens oficiais</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-spark" /></svg></span><strong>Logotipos</strong><span class="material-detail">Identidade visual</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-audio" /></svg></span><strong>Áudios</strong><span class="material-detail">Material sonoro</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-video" /></svg></span><strong>Vídeos</strong><span class="material-detail">Takes de divulgação</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
+            <p>Fotos, identidade visual, áudios e vídeos organizados para divulgação.</p>
+            <div class="material-grid" aria-label="Materiais para divulgação">
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-photo" /></svg></span><strong>Fotos</strong><span class="material-detail">Imagens oficiais</span><button class="material-download" type="button" disabled aria-label="Baixar fotos, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-spark" /></svg></span><strong>Logotipos</strong><span class="material-detail">Identidade visual</span><button class="material-download" type="button" disabled aria-label="Baixar logotipos, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-audio" /></svg></span><strong>Áudios</strong><span class="material-detail">Material sonoro</span><button class="material-download" type="button" disabled aria-label="Baixar áudios, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-video" /></svg></span><strong>Vídeos</strong><span class="material-detail">Takes de divulgação</span><button class="material-download" type="button" disabled aria-label="Baixar vídeos, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
             </div>
           </div>
           <div class="social-card reveal">

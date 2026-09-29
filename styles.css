@@ -90,12 +90,10 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .section-kicker > span:first-child { color: var(--yellow); }
 .kicker-rule { display: inline-block; width: 42px; height: 1px; background: linear-gradient(90deg, var(--pink), var(--orange)); }
 .artist-layout { display: grid; max-width: 1180px; grid-template-columns: minmax(270px, .85fr) 1.15fr; align-items: center; gap: clamp(60px, 10vw, 155px); margin: 0 auto; }
-.artist-photo-wrap { position: relative; width: min(100%, 390px); aspect-ratio: .76; justify-self: center; padding: 12px; border: 1px solid rgba(255,255,255,.26); background: rgba(255,255,255,.035); transform: rotate(-2deg); }
-.artist-photo-wrap::before { position: absolute; z-index: -1; inset: -18px 18px 18px -18px; border: 1px solid rgba(255,213,34,.72); content: ""; }
-.artist-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; filter: saturate(.93); }
+.artist-photo-wrap { position: relative; width: min(100%, 440px); aspect-ratio: 955 / 906; justify-self: center; }
+.artist-photo-wrap img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .artist-photo-glow { position: absolute; z-index: -2; top: 15%; left: -17%; width: 70%; aspect-ratio: 1; border-radius: 50%; background: rgba(130,0,216,.38); filter: blur(65px); }
-.photo-label { position: absolute; right: 12px; bottom: 12px; left: 12px; padding: 13px 15px; color: white; background: rgba(18,2,30,.78); font-size: .68rem; font-weight: 700; letter-spacing: .17em; transform: none; }
-.photo-label i { color: var(--yellow); font-style: normal; }
+.artist-stamp { z-index: 2; right: -3%; bottom: 5%; }
 .artist-copy { max-width: 570px; }
 .artist-copy .eyebrow { margin-bottom: 19px; }
 .artist h2, .identity h2 { margin-bottom: 27px; font-size: clamp(3rem, 5.8vw, 5.8rem); }
@@ -261,7 +259,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .rider { min-height: auto; padding: 100px 24px 95px; }
   .section-kicker { gap: 10px; margin-bottom: 30px; font-size: .66rem; }
   .artist-layout, .identity-layout { grid-template-columns: 1fr; gap: 44px; }
-  .artist-photo-wrap { width: min(80%, 330px); justify-self: start; margin-left: 9px; }
+  .artist-photo-wrap { width: min(100%, 390px); justify-self: center; margin-left: 0; }
   .artist-copy { max-width: 100%; }
   .artist h2, .identity h2 { margin-bottom: 20px; font-size: clamp(3.1rem, 12vw, 4.8rem); }
   .artist-lead { font-size: 1.2rem; }
@@ -339,8 +337,8 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .material-icon svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .material-item strong { font-size: 1.02rem; line-height: 1.2; }
 .material-detail { margin-top: 4px; color: #bbacc8; font-size: .75rem; }
-.material-status { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 15px; color: #d2bedf; font-size: .7rem; font-weight: 700; }
-.material-status svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; opacity: .6; }
+.material-download { display: flex; width: 100%; min-height: 37px; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding: 0 11px; border: 1px solid rgba(255,213,34,.4); border-radius: 9px; color: var(--yellow); background: rgba(255,213,34,.08); font: inherit; font-size: .74rem; font-weight: 800; cursor: not-allowed; opacity: .8; }
+.material-download svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .social-links { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 21px 0 0; }
 .social-links a { display: flex; min-width: 0; min-height: 112px; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; padding: 16px; border-radius: 14px; }
 .social-icon { display: grid; width: 38px; height: 38px; flex: none; place-items: center; border-radius: 12px; }
@@ -403,7 +401,8 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .artist-stats > div { min-height: 104px; padding: 17px 19px; }
   .artist-stats .career-card strong { font-size: 2rem; }
   .artist-stats .repertoire-line strong { font-size: 1rem; }
-  .artist-photo-wrap { width: min(76%, 320px); justify-self: center; margin: 9px 0 0; }
+  .artist-photo-wrap { width: min(100%, 390px); justify-self: center; margin: 9px 0 0; }
+  .artist-stamp { right: 1%; bottom: 5%; }
   .artist-quote { display: none; }
   .rider-board { width: min(100%, 540px); justify-self: center; margin: 0 8px 0 0; text-align: left; }
   .rider-list { grid-template-columns: 1fr; }
@@ -421,7 +420,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .material-icon svg { width: 20px; height: 20px; }
   .material-item strong { font-size: .9rem; }
   .material-detail { font-size: .69rem; }
-  .material-status { font-size: .66rem; }
+  .material-download { min-height: 35px; margin-top: 12px; font-size: .69rem; }
   .social-links { grid-template-columns: 1fr; gap: 9px; }
   .social-links a { min-height: 66px; padding: 11px 13px; }
   .social-copy strong { font-size: .85rem; }
