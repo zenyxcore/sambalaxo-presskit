@@ -68,12 +68,11 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .hero-signature b { padding: 0 4px; color: var(--orange); }
 .signature-line { display: inline-block; width: 35px; height: 1px; background: var(--pink); }
 .hero-art { position: relative; display: grid; min-height: min(640px, 66vw); place-items: center; }
-.hero-aura { position: absolute; width: min(38vw, 480px); aspect-ratio: 1; border: 1px solid rgba(255,213,34,.52); border-radius: 50%; }
+.hero-aura { position: absolute; width: min(38vw, 480px); aspect-ratio: 1; border: 1px solid rgba(255,213,34,.52); border-radius: 50%; opacity: .25; }
 .aura-one { animation: slow-spin 32s linear infinite; }
 .aura-two { width: min(30vw, 380px); border-color: rgba(232,30,129,.5); border-style: dashed; animation: slow-spin 46s linear infinite reverse; }
-.hero-photo-frame { position: relative; width: min(26vw, 355px); min-width: 270px; height: min(58vw, 510px); min-height: 385px; overflow: hidden; border: 1px solid rgba(255,255,255,.55); border-radius: 190px 190px 20px 20px; background: linear-gradient(165deg, #ece9e2 0%, #cfc8c1 74%, #d94e42 100%); box-shadow: 0 22px 110px rgba(8,0,18,.42), 0 0 80px rgba(125,0,209,.2); transform: rotate(2deg); }
-.hero-photo-frame::after { position: absolute; inset: 45% 0 0; content: ""; background: linear-gradient(0deg, rgba(21,3,34,.7), transparent); }
-.hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 51% 27%; mix-blend-mode: multiply; }
+.hero-photo-frame { position: relative; width: min(39vw, 520px); aspect-ratio: 955 / 906; }
+.hero-photo-frame img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 22px 54px rgba(8,0,18,.3)); }
 .hero-stamp { position: absolute; right: 3%; bottom: 18%; display: flex; width: 106px; height: 106px; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(25,5,32,.22); border-radius: 50%; color: #1e0623; background: var(--yellow); box-shadow: 0 10px 38px rgba(255,213,34,.2); transform: rotate(9deg); }
 .hero-stamp span { font-size: .57rem; font-weight: 800; letter-spacing: .14em; }
 .hero-stamp strong { font-family: var(--display); font-size: 2.5rem; letter-spacing: -.11em; line-height: .95; }
@@ -89,11 +88,10 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .section-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 45px; color: #d3c6dd; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .section-kicker > span:first-child { color: var(--yellow); }
 .kicker-rule { display: inline-block; width: 42px; height: 1px; background: linear-gradient(90deg, var(--pink), var(--orange)); }
-.artist-layout { display: grid; max-width: 1180px; grid-template-columns: minmax(270px, .85fr) 1.15fr; align-items: center; gap: clamp(60px, 10vw, 155px); margin: 0 auto; }
-.artist-photo-wrap { position: relative; width: min(100%, 440px); aspect-ratio: 955 / 906; justify-self: center; }
-.artist-photo-wrap img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.artist-layout { display: grid; max-width: 1180px; grid-template-columns: minmax(270px, .85fr) 1.15fr; align-items: center; gap: clamp(32px, 5vw, 72px); margin: 0 auto; }
+.artist-photo-wrap { position: relative; width: min(100%, 440px); aspect-ratio: 716 / 749; justify-self: center; }
+.artist-photo-wrap img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 18px 32px rgba(6,0,14,.42)); }
 .artist-photo-glow { position: absolute; z-index: -2; top: 15%; left: -17%; width: 70%; aspect-ratio: 1; border-radius: 50%; background: rgba(130,0,216,.38); filter: blur(65px); }
-.artist-stamp { z-index: 2; right: -3%; bottom: 5%; }
 .artist-copy { max-width: 570px; }
 .artist-copy .eyebrow { margin-bottom: 19px; }
 .artist h2, .identity h2 { margin-bottom: 27px; font-size: clamp(3rem, 5.8vw, 5.8rem); }
@@ -246,7 +244,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .text-link { font-size: .83rem; }
   .hero-signature { margin-top: 22px; font-size: .64rem; }
   .hero-art { position: absolute; right: -15px; bottom: 31px; width: min(47vw, 255px); min-height: unset; height: min(53vw, 288px); opacity: .95; }
-  .hero-photo-frame { width: 70%; min-width: 0; height: 91%; min-height: 0; border-radius: 120px 120px 13px 13px; }
+  .hero-photo-frame { width: 100%; }
   .hero-aura { width: 100%; }
   .aura-two { width: 79%; }
   .hero-stamp { right: -3px; bottom: 16%; width: 67px; height: 67px; }
@@ -380,7 +378,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .hero-art { position: relative; z-index: 1; right: auto; bottom: auto; width: min(100%, 380px); height: clamp(320px, 96vw, 420px); min-height: 0; justify-self: center; opacity: 1; }
   .hero-aura { width: 90%; }
   .aura-two { width: 72%; }
-  .hero-photo-frame { width: 68%; min-width: 0; height: 94%; min-height: 0; border-radius: 160px 160px 16px 16px; }
+  .hero-photo-frame { width: 100%; }
   .hero-stamp { right: 4%; bottom: 17%; width: 78px; height: 78px; }
   .hero-stamp strong { font-size: 1.9rem; }
   .hero-index { right: 7%; bottom: -5px; width: 125px; }
@@ -388,8 +386,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .artist, .identity, .rider { padding: 82px 22px 80px; text-align: center; }
   .section-kicker, .artist-copy .eyebrow, .identity-copy .eyebrow, .rider-copy .eyebrow { justify-content: center; }
   .section-kicker { margin-bottom: 30px; }
-  .artist-layout, .identity-layout, .rider-layout { gap: 35px; }
-  .artist-copy { order: -1; }
+  .artist-layout { gap: 20px; }
+  .identity-layout, .rider-layout { gap: 35px; }
+  .artist-copy .eyebrow { margin-bottom: 10px; }
   .artist-copy, .identity-copy, .rider-copy { max-width: 540px; margin: 0 auto; }
   .artist h2, .identity h2, .rider h2 { font-size: clamp(2.65rem, 10.8vw, 4.9rem); }
   .artist-lead, .artist-body, .identity-description, .rider-description { margin-right: auto; margin-left: auto; }
@@ -401,8 +400,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .artist-stats > div { min-height: 104px; padding: 17px 19px; }
   .artist-stats .career-card strong { font-size: 2rem; }
   .artist-stats .repertoire-line strong { font-size: 1rem; }
-  .artist-photo-wrap { width: min(100%, 390px); justify-self: center; margin: 9px 0 0; }
-  .artist-stamp { right: 1%; bottom: 5%; }
+  .artist-photo-wrap { width: min(100%, 390px); justify-self: center; margin: 0; }
   .artist-quote { display: none; }
   .rider-board { width: min(100%, 540px); justify-self: center; margin: 0 8px 0 0; text-align: left; }
   .rider-list { grid-template-columns: 1fr; }
