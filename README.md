@@ -21,4 +21,8 @@ Depois, abra `http://localhost:4173`.
 - Acesso ao WhatsApp de shows, Instagram, Spotify e YouTube
 - Espaço de download para fotos, logo, áudios e takes, marcado como em breve
 
+## Materiais de divulgação
+
+Os cards de fotos, logotipos, áudios e vídeos são independentes. Enquanto os URLs não forem fornecidos, aparecem como “Link em breve” e não são clicáveis. Quando os links chegarem, substitua cada `div.material-item` em `index.html` por um `a.material-item` com o `href` correspondente, mantendo o conteúdo e adicionando `target="_blank" rel="noopener noreferrer"`.
+
 O conteúdo textual do press kit de referência não foi reaproveitado.
