@@ -21,6 +21,8 @@ Depois, abra `http://localhost:4173`.
 - Acesso ao WhatsApp de shows, Instagram, Spotify e YouTube
 - Espaço de download para fotos, logo, áudios e takes, marcado como em breve
 
+O vídeo ambiente da hero mobile fica em `assets/hero-mobile.mp4`. Ele só é carregado em telas de até 760 px e quando o dispositivo não pede movimento reduzido; a versão de desktop mantém o fundo original.
+
 ## Materiais de divulgação
 
 Os cards de fotos, logotipos, áudios e vídeos são independentes. Enquanto os URLs não forem fornecidos, aparecem como “Link em breve” e não são clicáveis. Quando os links chegarem, substitua cada `div.material-item` em `index.html` por um `a.material-item` com o `href` correspondente, mantendo o conteúdo e adicionando `target="_blank" rel="noopener noreferrer"`.

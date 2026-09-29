@@ -44,6 +44,7 @@ a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 5px; border-
 .hero { display: grid; min-height: min(900px, 100svh); min-height: max(720px, 100svh); grid-template-columns: minmax(0, 1.04fr) minmax(360px, .96fr); align-items: center; gap: clamp(20px, 5vw, 82px); padding: 136px clamp(48px, 11vw, 170px) 110px clamp(78px, 15vw, 216px); background: radial-gradient(ellipse at 78% 46%, rgba(111, 1, 167, .34), transparent 42%), linear-gradient(115deg, #160322 5%, #1e0436 59%, #24033c 100%); }
 .hero::before { position: absolute; z-index: -1; inset: 0; content: ""; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(90deg, transparent, #000 45%, #000); }
 .hero::after { position: absolute; z-index: -1; top: -25%; right: -9%; width: min(62vw, 880px); aspect-ratio: 1; border: 1px solid rgba(255,213,34,.13); border-radius: 50%; content: ""; box-shadow: 0 0 0 48px rgba(255,213,34,.025), 0 0 0 96px rgba(255,213,34,.02); }
+.hero-video-layer { display: none; }
 .hero-copy { position: relative; z-index: 2; max-width: 680px; padding-bottom: 15px; }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 21px; color: var(--yellow); font-size: .76rem; font-weight: 700; letter-spacing: .16em; line-height: 1.4; text-transform: uppercase; }
 .eyebrow-mark { width: 7px; height: 7px; background: var(--orange); box-shadow: 0 0 16px var(--orange); transform: rotate(45deg); }
@@ -370,6 +371,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .main-nav a, .main-nav a:nth-child(2) { display: inline-flex; min-height: 44px; align-items: center; padding: 0 8px; color: #d8c8e3; font-size: .76rem; font-weight: 700; white-space: nowrap; }
   .chapter-rail { display: none; }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 29px; padding: 148px 22px 62px; text-align: center; }
+  .hero-video-layer { position: absolute; z-index: 0; top: 106px; right: 0; left: 0; display: block; height: min(82svh, 740px); overflow: hidden; pointer-events: none; opacity: .42; mix-blend-mode: screen; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 36%, rgba(0,0,0,.72) 65%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 36%, rgba(0,0,0,.72) 65%, transparent 100%); }
+  .hero-video-layer::after { position: absolute; inset: 0; content: ""; background: linear-gradient(to bottom, rgba(22,2,38,.48), rgba(22,2,38,.24) 42%, rgba(22,2,38,.64)); }
+  .hero-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; filter: brightness(.76) saturate(.85); }
   .hero-copy { max-width: 500px; justify-self: center; padding: 0; }
   .hero .eyebrow, .hero-actions, .hero-signature { justify-content: center; }
   .hero-wordmark { width: min(76%, 310px); max-height: 76px; margin: 0 auto 19px; object-position: center; }
@@ -378,7 +382,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .hero-actions { gap: 8px; }
   .hero-actions .button { min-width: 175px; }
   .hero-signature { margin-top: 24px; }
-  .hero-art { position: relative; right: auto; bottom: auto; width: min(100%, 380px); height: clamp(320px, 96vw, 420px); min-height: 0; justify-self: center; opacity: 1; }
+  .hero-art { position: relative; z-index: 1; right: auto; bottom: auto; width: min(100%, 380px); height: clamp(320px, 96vw, 420px); min-height: 0; justify-self: center; opacity: 1; }
   .hero-aura { width: 90%; }
   .aura-two { width: 72%; }
   .hero-photo-frame { width: 68%; min-width: 0; height: 94%; min-height: 0; border-radius: 160px 160px 16px 16px; }
@@ -441,4 +445,5 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
+  .hero-video-layer { display: none; }
 }

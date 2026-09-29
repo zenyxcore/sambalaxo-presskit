@@ -40,3 +40,25 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 
 updateProgress();
+
+const heroVideo = document.querySelector(".hero-video");
+const motionQuery = window.matchMedia("(max-width: 760px) and (prefers-reduced-motion: no-preference)");
+
+const syncHeroVideo = () => {
+  if (!heroVideo) return;
+  if (motionQuery.matches) {
+    if (!heroVideo.src) heroVideo.src = heroVideo.dataset.src;
+    if (!document.hidden) heroVideo.play().catch(() => {});
+  } else if (heroVideo.src) {
+    heroVideo.pause();
+    heroVideo.removeAttribute("src");
+    heroVideo.load();
+  }
+};
+
+motionQuery.addEventListener("change", syncHeroVideo);
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) heroVideo?.pause();
+  else syncHeroVideo();
+});
+syncHeroVideo();
