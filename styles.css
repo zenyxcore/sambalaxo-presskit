@@ -333,6 +333,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .button-primary .brand-icon { filter: brightness(0); }
 .connect-resources { max-width: 1120px; grid-template-columns: 1fr; gap: 20px; text-align: center; }
 .download-card, .social-card { padding: clamp(25px, 3vw, 42px); border-radius: 22px; }
+.connect-resources .rider-board { width: 100%; margin: 0; text-align: left; }
+.connect-resources .rider-board-top { padding: 20px 24px; }
+.connect-resources .rider-content { padding: 0 24px 22px; }
 .download-card h3, .social-card h3 { font-size: clamp(1.45rem, 2.5vw, 2rem); }
 .download-card p { max-width: 540px; margin: 0 auto 25px; font-size: .94rem; }
 .resource-kicker { justify-content: center; }
@@ -431,6 +434,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .material-detail { font-size: .69rem; }
   .material-download { min-height: 35px; margin-top: 12px; font-size: .69rem; }
   .social-links { grid-template-columns: 1fr; gap: 9px; }
+  .connect-resources .rider-board { padding: 0; }
+  .connect-resources .rider-board-top { padding: 18px 17px; }
+  .connect-resources .rider-content { padding: 0 17px 18px; }
   .social-links a { min-height: 66px; padding: 11px 13px; }
   .social-copy strong { font-size: .85rem; }
   .connect-side-note { display: none; }
