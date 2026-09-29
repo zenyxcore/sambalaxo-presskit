@@ -24,9 +24,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
 a:focus-visible { outline: 3px solid var(--yellow); outline-offset: 5px; border-radius: 4px; }
 ::selection { color: #170021; background: var(--yellow); }
 
-.top-progress { position: fixed; z-index: 30; inset: 0 0 auto; height: 4px; background: linear-gradient(90deg, #49305d, #563565); box-shadow: inset 0 -1px 0 rgba(255,255,255,.13); }
-.top-progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--pink), var(--yellow), var(--orange)); box-shadow: 0 0 8px rgba(255,213,34,.48); transform-origin: left; }
-.site-header { position: fixed; z-index: 20; inset: 3px 0 auto; display: flex; height: 78px; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 6vw, 92px); border-bottom: 1px solid rgba(255,255,255,.09); background: rgba(15, 1, 26, .72); backdrop-filter: blur(18px); }
+.music-player { position: fixed; z-index: 30; inset: 0 0 auto; display: flex; height: 30px; align-items: center; justify-content: space-between; gap: 14px; padding: 0 clamp(12px, 3vw, 36px); border-bottom: 1px solid rgba(255,255,255,.08); background: rgba(12,0,23,.92); backdrop-filter: blur(16px); }
+.music-track { display: flex; min-width: 0; align-items: center; gap: 9px; color: #f7efff; font-size: .69rem; font-weight: 700; line-height: 1; white-space: nowrap; }
+.music-track small { color: #bbaac8; font-size: .65rem; font-weight: 500; }
+.music-equalizer { display: flex; height: 14px; align-items: center; gap: 2px; color: var(--yellow); }
+.music-equalizer i { display: block; width: 2px; height: 5px; border-radius: 2px; background: currentColor; }
+.music-player.is-playing .music-equalizer i { animation: music-bars .65s ease-in-out infinite alternate; }
+.music-player.is-playing .music-equalizer i:nth-child(2) { animation-delay: .2s; }
+.music-player.is-playing .music-equalizer i:nth-child(3) { animation-delay: .4s; }
+.music-controls { display: flex; flex: none; align-items: center; gap: 4px; }
+.music-controls button { display: grid; width: 26px; height: 26px; place-items: center; padding: 0; border: 0; border-radius: 50%; color: #e9dff1; background: transparent; cursor: pointer; }
+.music-controls button:hover, .music-controls button:focus-visible { color: var(--yellow); background: rgba(255,255,255,.08); }
+.music-controls svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.music-controls .icon-pause, .music-controls .icon-muted { display: none; }
+.music-player.is-playing .icon-play { display: none; }
+.music-player.is-playing .icon-pause { display: block; }
+.music-player.is-muted .icon-volume { display: none; }
+.music-player.is-muted .icon-muted { display: block; }
+.music-progress { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; background: rgba(255,255,255,.12); }
+.music-progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--pink), var(--yellow), var(--orange)); box-shadow: 0 0 8px rgba(255,213,34,.48); transition: width .12s linear; }
+.site-header { position: fixed; z-index: 20; inset: 30px 0 auto; display: flex; height: 78px; align-items: center; justify-content: space-between; padding: 0 clamp(20px, 6vw, 92px); border-bottom: 1px solid rgba(255,255,255,.09); background: rgba(15, 1, 26, .72); backdrop-filter: blur(18px); }
 .brand-lockup { display: grid; width: 54px; height: 54px; flex: none; place-items: center; }
 .brand-lockup img { width: 48px; height: 46px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,197,30,.3)) drop-shadow(0 0 16px rgba(131,40,209,.22)); }
 .main-nav { display: flex; align-items: center; gap: clamp(22px, 4vw, 60px); }
@@ -56,6 +73,12 @@ h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: -.055em;
 h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .hero-description { max-width: 470px; margin-bottom: 30px; color: #ded3e8; font-size: clamp(1rem, 1.35vw, 1.14rem); line-height: 1.7; }
 .hero-actions, .connect-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 17px 24px; }
+.hero-formats { width: min(100%, 480px); margin-top: 27px; }
+.formats-title { display: block; margin-bottom: 10px; color: rgba(240,229,248,.67); font-size: .63rem; font-weight: 800; letter-spacing: .16em; }
+.format-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.format-links a { display: flex; min-height: 42px; align-items: center; justify-content: center; gap: 7px; padding: 0 9px; border: 1px solid rgba(255,255,255,.17); border-radius: 11px; color: #f2eaf7; background: rgba(18,2,31,.36); font-size: .7rem; font-weight: 700; text-decoration: none; white-space: nowrap; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.format-links a:hover { transform: translateY(-2px); border-color: rgba(255,213,34,.62); background: rgba(255,213,34,.08); }
+.format-links svg { width: 17px; height: 17px; flex: none; fill: none; stroke: var(--yellow); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-size: .92rem; font-weight: 700; text-align: center; text-decoration: none; transition: transform .2s, background .2s, border-color .2s, color .2s; }
 .button:hover { transform: translateY(-3px); }
 .button-primary { color: #1c0624; background: var(--yellow); box-shadow: 0 8px 30px rgba(255, 213, 34, .2); }
@@ -215,6 +238,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 @keyframes slow-spin { to { transform: rotate(360deg); } }
 @keyframes led-pulse { 0%, 100% { filter: drop-shadow(0 0 18px rgba(255,213,34,.55)) drop-shadow(0 0 44px rgba(255,108,24,.27)); } 50% { filter: drop-shadow(0 0 24px rgba(255,213,34,.9)) drop-shadow(0 0 62px rgba(255,108,24,.45)); } }
 @keyframes scan { to { transform: translateY(330%); } }
+@keyframes music-bars { from { height: 4px; } to { height: 13px; } }
 
 @media (max-width: 1100px) {
   .chapter-rail { left: 18px; }
@@ -336,6 +360,12 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .connect-resources .rider-board { width: 100%; margin: 0; text-align: left; }
 .connect-resources .rider-board-top { padding: 20px 24px; }
 .connect-resources .rider-content { padding: 0 24px 22px; }
+.connect-resources .stage-board { margin-top: -8px; }
+.stage-content > p { margin: 0 0 14px; color: #c5b6d1; font-size: .9rem; }
+.stage-download { display: inline-flex; min-height: 42px; align-items: center; gap: 9px; margin-bottom: 18px; padding: 0 15px; border: 1px solid rgba(255,213,34,.55); border-radius: 10px; color: var(--yellow); font-size: .81rem; font-weight: 700; text-decoration: none; }
+.stage-download:hover { color: #1c0624; background: var(--yellow); }
+.stage-download svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.stage-preview { display: block; width: 100%; height: min(68vh, 700px); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: #fff; }
 .download-card h3, .social-card h3 { font-size: clamp(1.45rem, 2.5vw, 2rem); }
 .download-card p { max-width: 540px; margin: 0 auto 25px; font-size: .94rem; }
 .resource-kicker { justify-content: center; }
@@ -347,6 +377,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
 .material-detail { margin-top: 4px; color: #bbacc8; font-size: .75rem; }
 .material-download { display: flex; width: 100%; min-height: 37px; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding: 0 11px; border: 1px solid var(--yellow); border-radius: 9px; color: #1c0624; background: var(--yellow); font: inherit; font-size: .74rem; font-weight: 800; cursor: not-allowed; opacity: 1; }
 .material-download svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.download-card > .material-download { min-height: 54px; justify-content: center; gap: 12px; margin-top: 18px; border-radius: 13px; font-size: .92rem; text-decoration: none; cursor: pointer; box-shadow: 0 8px 25px rgba(255,213,34,.18); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.download-card > .material-download:hover { transform: translateY(-2px); background: #ffe45c; box-shadow: 0 12px 30px rgba(255,213,34,.28); }
+.download-card > .material-download svg { width: 20px; height: 20px; }
 .social-links { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 21px 0 0; }
 .social-links a { display: flex; min-width: 0; min-height: 112px; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px; padding: 16px; border-radius: 14px; }
 .social-icon { display: grid; width: 38px; height: 38px; flex: none; place-items: center; border-radius: 12px; }
@@ -384,7 +417,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .hero-description { order: 3; max-width: 470px; margin: 0 auto; font-size: 1rem; line-height: 1.6; }
   .hero-actions { order: 5; gap: 8px; }
   .hero-actions .button { min-width: 0; padding: 0 14px; }
-  .hero-signature { order: 6; margin-top: 24px; }
+  .hero-formats { order: 6; width: min(100%, 460px); margin: 24px auto 0; }
+  .format-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-signature { order: 7; margin-top: 24px; }
   .hero-art { position: relative; z-index: 1; right: auto; bottom: auto; width: min(100%, 380px); height: clamp(300px, 90vw, 390px); min-height: 0; justify-self: center; order: 4; margin: 12px auto 14px; opacity: 1; }
   .hero-aura { width: 90%; }
   .aura-two { width: 72%; }
@@ -434,6 +469,9 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .material-detail { font-size: .69rem; }
   .material-download { min-height: 35px; margin-top: 12px; font-size: .69rem; }
   .social-links { grid-template-columns: 1fr; gap: 9px; }
+  .stage-content > p { font-size: .86rem; }
+  .stage-preview { height: 58svh; }
+  .connect-resources .stage-board { margin-top: -8px; }
   .connect-resources .rider-board { padding: 0; }
   .connect-resources .rider-board-top { padding: 18px 17px; }
   .connect-resources .rider-content { padding: 0 17px 18px; }

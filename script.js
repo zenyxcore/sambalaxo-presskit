@@ -25,21 +25,59 @@ const chapterObserver = new IntersectionObserver((entries) => {
 
 sections.forEach((section) => chapterObserver.observe(section));
 
-let ticking = false;
-const updateProgress = () => {
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
-  progressFill.style.width = `${Math.min(100, Math.max(0, progress))}%`;
-  ticking = false;
+const audio = document.querySelector("#site-audio");
+const musicPlayer = document.querySelector(".music-player");
+const musicToggle = document.querySelector("#music-toggle");
+const muteToggle = document.querySelector("#mute-toggle");
+
+const updateMusicProgress = () => {
+  if (!audio || !progressFill || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
+  progressFill.style.width = `${Math.min(100, (audio.currentTime / audio.duration) * 100)}%`;
 };
 
-window.addEventListener("scroll", () => {
-  if (ticking) return;
-  ticking = true;
-  window.requestAnimationFrame(updateProgress);
-}, { passive: true });
+const syncMusicControls = () => {
+  if (!audio || !musicPlayer) return;
+  musicPlayer.classList.toggle("is-playing", !audio.paused);
+  musicPlayer.classList.toggle("is-muted", audio.muted);
+  musicToggle?.setAttribute("aria-label", audio.paused ? "Tocar música" : "Pausar música");
+  musicToggle?.setAttribute("aria-pressed", String(!audio.paused));
+  muteToggle?.setAttribute("aria-label", audio.muted ? "Ativar som" : "Silenciar música");
+  muteToggle?.setAttribute("aria-pressed", String(audio.muted));
+};
 
-updateProgress();
+musicToggle?.addEventListener("click", async () => {
+  if (!audio) return;
+  if (audio.paused) {
+    try { await audio.play(); } catch { /* O controle continua disponível se o navegador bloquear o áudio. */ }
+  } else audio.pause();
+  syncMusicControls();
+});
+
+muteToggle?.addEventListener("click", () => {
+  if (!audio) return;
+  audio.muted = !audio.muted;
+  syncMusicControls();
+});
+
+audio?.addEventListener("timeupdate", updateMusicProgress);
+audio?.addEventListener("durationchange", updateMusicProgress);
+audio?.addEventListener("play", syncMusicControls);
+audio?.addEventListener("pause", syncMusicControls);
+audio?.addEventListener("volumechange", syncMusicControls);
+
+if (audio) {
+  audio.muted = true;
+  audio.play().catch(() => syncMusicControls());
+  syncMusicControls();
+}
+
+document.querySelectorAll(".stage-board").forEach((details) => {
+  details.addEventListener("toggle", () => {
+    if (!details.open) return;
+    const preview = details.querySelector(".stage-preview");
+    if (preview && !preview.src) preview.src = preview.dataset.src;
+  });
+});
 
 const heroVideo = document.querySelector(".hero-video");
 const motionQuery = window.matchMedia("(max-width: 760px) and (prefers-reduced-motion: no-preference)");

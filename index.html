@@ -29,7 +29,15 @@
       <symbol id="icon-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></symbol>
       <symbol id="icon-sunset" viewBox="0 0 24 24"><path d="M3 19h18M5 15h14M8 15a4 4 0 0 1 8 0M12 3v3M4.5 7l2 2m13-2-2 2"/></symbol>
     </svg>
-    <div class="top-progress" aria-hidden="true"><span id="progress-fill"></span></div>
+    <div class="music-player" aria-label="Player de Segunda Taça">
+      <div class="music-progress" aria-hidden="true"><span id="progress-fill"></span></div>
+      <span class="music-track"><span class="music-equalizer" aria-hidden="true"><i></i><i></i><i></i></span><span>Segunda Taça <small>· Sambalaxo</small></span></span>
+      <div class="music-controls">
+        <button id="music-toggle" type="button" aria-label="Tocar música" aria-pressed="false"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg></button>
+        <button id="mute-toggle" type="button" aria-label="Silenciar música" aria-pressed="false"><svg class="icon-volume" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16 9a5 5 0 0 1 0 6m2-9a9 9 0 0 1 0 12"/></svg><svg class="icon-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="m17 9 5 6m0-6-5 6"/></svg></button>
+      </div>
+      <audio id="site-audio" src="/assets/segunda-taca.mp3" preload="none" loop></audio>
+    </div>
 
     <header class="site-header">
       <a class="brand-lockup" href="#inicio" aria-label="Sambalaxo, voltar ao início">
@@ -65,6 +73,15 @@
             <a class="button button-primary" href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noopener noreferrer">Falar sobre shows</a>
             <a class="button button-outline" href="#artista">Conheça o show</a>
           </div>
+          <div class="hero-formats reveal">
+            <span class="formats-title">TIPOS DE SHOW</span>
+            <div class="format-links">
+              <a href="https://www.instagram.com/reel/DU4AJU3CdEl/?stkn=ZnR1MXRvN3czOXp4" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6"/></svg><span>Prefeitura</span></a>
+              <a href="https://instagram.com/reel/DZGmY89M70o/?stkn=MWZiZXg4MTJyb2o5cQ==" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.6-8-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.4-8 10-8 10Z"/></svg><span>Casamento</span></a>
+              <a href="https://www.instagram.com/reel/DQMy8BtCWX2/?stkn=d2l2bXFqMWYyZWRl" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3"/></svg><span>360 Graus</span></a>
+              <a href="https://www.instagram.com/reel/DGzYxibsXUn/?stkn=MXRmcXk4ZzlxYXZ0eg==" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V8l7-4 7 4v12M9 20v-6h6v6"/><path d="M3 8h18"/></svg><span>Palco</span></a>
+            </div>
+          </div>
           <div class="hero-signature reveal"><span class="signature-line"></span><span>Reinaldinho <b>•</b> A Nave do Amor</span></div>
         </div>
         <div class="hero-art" aria-label="Reinaldinho com microfone durante uma apresentação">
@@ -86,7 +103,7 @@
             <img src="/assets/reinaldinho-portrait.webp" alt="Reinaldinho com camiseta preta do Sambalaxo" loading="lazy" />
           </div>
           <div class="artist-copy">
-            <h2 id="artist-title" class="reveal">Pagode para<br />viver <em>junto.</em></h2>
+            <h2 id="artist-title" class="reveal">Pagode de mesa<br />que virou<br /><em>show.</em></h2>
             <p class="artist-lead reveal">Com <span class="show-name">A Nave do Amor</span>, o Sambalaxo entrega um show contagiante e emocionante, feito para cantar do começo ao fim.</p>
             <p class="artist-body reveal">O repertório passeia pelos hits do pagode dos anos 90 até os dias atuais, reúne sucessos e composições de Belo e traz a energia de uma apresentação inspirada na Tardezinha.</p>
             <div class="show-tags reveal" aria-label="Destaques do repertório">
@@ -143,11 +160,12 @@
             <h3>Materiais do Sambalaxo</h3>
             <p>Fotos, identidade visual, áudios e vídeos organizados para divulgação.</p>
             <div class="material-grid" aria-label="Materiais para divulgação">
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-photo" /></svg></span><strong>Fotos</strong><span class="material-detail">Imagens oficiais</span><button class="material-download" type="button" disabled aria-label="Baixar fotos, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-spark" /></svg></span><strong>Logotipos</strong><span class="material-detail">Identidade visual</span><button class="material-download" type="button" disabled aria-label="Baixar logotipos, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-audio" /></svg></span><strong>Áudios</strong><span class="material-detail">Material sonoro</span><button class="material-download" type="button" disabled aria-label="Baixar áudios, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
-              <div class="material-item"><span class="material-icon"><svg><use href="#icon-video" /></svg></span><strong>Vídeos</strong><span class="material-detail">Takes de divulgação</span><button class="material-download" type="button" disabled aria-label="Baixar vídeos, indisponível no momento"><span>Baixar</span><svg aria-hidden="true"><use href="#icon-download" /></svg></button></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-photo" /></svg></span><strong>Fotos</strong><span class="material-detail">Imagens oficiais</span></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-spark" /></svg></span><strong>Logotipos</strong><span class="material-detail">Identidade visual</span></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-audio" /></svg></span><strong>Áudios</strong><span class="material-detail">Material sonoro</span></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-video" /></svg></span><strong>Vídeos</strong><span class="material-detail">Takes de divulgação</span></div>
             </div>
+            <a class="material-download" href="https://drive.google.com/drive/folders/1qmcidl3MzqJLqQ-2n7Wtk4wdk9DxQ9dp" target="_blank" rel="noopener noreferrer"><span>Baixar materiais</span><svg aria-hidden="true"><use href="#icon-download" /></svg></a>
           </div>
           <details class="rider-board reveal" id="camarim">
             <summary class="rider-board-top"><span>Condições de camarim</span><span class="rider-toggle" aria-hidden="true">+</span></summary>
@@ -162,6 +180,14 @@
                 <li><strong>03</strong><span>Porções de carne ou frango</span></li>
               </ul>
               <p class="rider-note">As pizzas podem ser substituídas por porções.</p>
+            </div>
+          </details>
+          <details class="rider-board stage-board reveal" id="mapa-de-palco">
+            <summary class="rider-board-top"><span>Mapa de palco</span><span class="rider-toggle" aria-hidden="true">+</span></summary>
+            <div class="rider-content stage-content">
+              <p>Consulte a estrutura técnica da apresentação.</p>
+              <a class="stage-download" href="/assets/mapa-de-palco.pdf" download="Sambalaxo-mapa-de-palco.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"/></svg>Baixar mapa de palco</a>
+              <iframe class="stage-preview" title="Visualização do mapa de palco do Sambalaxo" data-src="/assets/mapa-de-palco.pdf#view=FitH" loading="lazy"></iframe>
             </div>
           </details>
           <div class="social-card reveal">
