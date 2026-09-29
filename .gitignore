@@ -1,0 +1,6 @@
+.vercel/
+node_modules/
+reference-preview/
+desktop-check.png
+mobile-check.png
+.DS_Store
