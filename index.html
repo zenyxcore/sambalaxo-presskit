@@ -18,6 +18,13 @@
     <script src="/script.js" defer></script>
   </head>
   <body>
+    <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-photo" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m4 17 5-5 3.5 3.5 2.5-2.5 5 5"/></symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 2 2.6 7.4L22 12l-7.4 2.6L12 22l-2.6-7.4L2 12l7.4-2.6L12 2Z"/></symbol>
+      <symbol id="icon-audio" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+      <symbol id="icon-video" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 8 6 4-6 4V8Z"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    </svg>
     <div class="top-progress" aria-hidden="true"><span id="progress-fill"></span></div>
 
     <header class="site-header">
@@ -28,8 +35,9 @@
         <a href="#artista">O show</a>
         <a href="#identidade">Identidade</a>
         <a href="#camarim">Camarim</a>
+        <a href="#conectar">Contato</a>
       </nav>
-      <a class="header-link" href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noreferrer">Shows</a>
+      <a class="header-link" href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noopener noreferrer"><img src="/assets/whatsapp.svg" alt="" /> <span>Shows</span></a>
     </header>
 
     <aside class="chapter-rail" aria-label="Capítulos da apresentação">
@@ -150,27 +158,31 @@
           <h2 id="connect-title" class="reveal">O próximo<br />encontro pode<br /><em>ser o seu.</em></h2>
           <p class="connect-description reveal">Ouça, acompanhe e fale com o Sambalaxo sobre shows.</p>
           <div class="connect-actions reveal">
-            <a class="button button-primary" href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noreferrer">Falar sobre shows no WhatsApp</a>
-            <a class="button button-outline" href="https://open.spotify.com/intl-pt/artist/1Jv7x4RaknCnhS0WRgGwDU" target="_blank" rel="noreferrer">Ouvir no Spotify</a>
+            <a class="button button-primary" href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="/assets/whatsapp.svg" alt="" /> Falar sobre shows</a>
+            <a class="button button-outline" href="https://open.spotify.com/intl-pt/artist/1Jv7x4RaknCnhS0WRgGwDU" target="_blank" rel="noopener noreferrer"><img class="brand-icon" src="/assets/spotify.svg" alt="" /> Ouvir no Spotify</a>
           </div>
         </div>
         <div class="connect-resources">
           <div class="download-card reveal">
             <div class="resource-kicker"><span class="resource-spark"></span> ACERVO DE DIVULGAÇÃO</div>
             <h3>Materiais do Sambalaxo</h3>
-            <p>Fotos, logotipo, áudios e takes para divulgação. O acesso será adicionado assim que o link estiver disponível.</p>
-            <div class="asset-chips"><span>Fotos</span><span>Logo</span><span>Áudios</span><span>Takes</span></div>
-            <button class="button button-disabled" type="button" disabled>Download em breve</button>
+            <p>Cada material terá seu próprio acesso. Os links serão ativados assim que estiverem disponíveis.</p>
+            <div class="material-grid" aria-label="Materiais para divulgação, links em breve">
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-photo" /></svg></span><strong>Fotos</strong><span class="material-detail">Imagens oficiais</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-spark" /></svg></span><strong>Logotipos</strong><span class="material-detail">Identidade visual</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-audio" /></svg></span><strong>Áudios</strong><span class="material-detail">Material sonoro</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
+              <div class="material-item"><span class="material-icon"><svg><use href="#icon-video" /></svg></span><strong>Vídeos</strong><span class="material-detail">Takes de divulgação</span><span class="material-status">Link em breve <svg><use href="#icon-arrow" /></svg></span></div>
+            </div>
           </div>
           <div class="social-card reveal">
             <div class="resource-kicker"><span class="resource-spark"></span> ACOMPANHE</div>
             <h3>Encontre o Sambalaxo</h3>
             <div class="social-links">
-              <a href="https://www.instagram.com/sambalaxo" target="_blank" rel="noreferrer"><span>Instagram</span><strong>@sambalaxo</strong></a>
-              <a href="https://open.spotify.com/intl-pt/artist/1Jv7x4RaknCnhS0WRgGwDU" target="_blank" rel="noreferrer"><span>Spotify</span><strong>Sambalaxo</strong></a>
-              <a href="https://www.youtube.com/@Sambalaxo" target="_blank" rel="noreferrer"><span>YouTube</span><strong>@Sambalaxo</strong></a>
+              <a href="https://www.instagram.com/sambalaxo" target="_blank" rel="noopener noreferrer"><span class="social-icon instagram"><img src="/assets/instagram.svg" alt="" /></span><span class="social-copy"><span>Instagram</span><strong>@sambalaxo</strong></span><svg class="social-arrow"><use href="#icon-arrow" /></svg></a>
+              <a href="https://open.spotify.com/intl-pt/artist/1Jv7x4RaknCnhS0WRgGwDU" target="_blank" rel="noopener noreferrer"><span class="social-icon spotify"><img src="/assets/spotify.svg" alt="" /></span><span class="social-copy"><span>Spotify</span><strong>Sambalaxo</strong></span><svg class="social-arrow"><use href="#icon-arrow" /></svg></a>
+              <a href="https://www.youtube.com/@Sambalaxo" target="_blank" rel="noopener noreferrer"><span class="social-icon youtube"><img src="/assets/youtube.svg" alt="" /></span><span class="social-copy"><span>YouTube</span><strong>@Sambalaxo</strong></span><svg class="social-arrow"><use href="#icon-arrow" /></svg></a>
+              <a href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noopener noreferrer"><span class="social-icon whatsapp"><img src="/assets/whatsapp.svg" alt="" /></span><span class="social-copy"><span>WhatsApp · Shows</span><strong>+55 (16) 99963-6809</strong></span><svg class="social-arrow"><use href="#icon-arrow" /></svg></a>
             </div>
-            <a class="phone-link" href="https://wa.me/5516999636809?text=Ol%C3%A1%21%20Vim%20pelo%20press%20kit%20do%20Sambalaxo%20e%20gostaria%20de%20conversar%20sobre%20shows." target="_blank" rel="noreferrer">WhatsApp para shows <strong>+55 (16) 99963-6809</strong></a>
           </div>
         </div>
         <div class="connect-footer">
