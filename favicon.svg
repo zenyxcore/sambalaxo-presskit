@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a235ff"/><stop offset="1" stop-color="#3e0069"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#150322"/>
+  <circle cx="32" cy="32" r="25" fill="url(#g)" stroke="#ffd522" stroke-width="2"/>
+  <text x="32" y="39" fill="#ffd522" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" letter-spacing="-2" text-anchor="middle">SX</text>
+</svg>
