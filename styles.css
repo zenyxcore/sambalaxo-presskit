@@ -384,13 +384,13 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .hero-index { right: 7%; bottom: -5px; width: 125px; }
   .scroll-cue { display: none; }
   .artist, .identity, .rider { padding: 82px 22px 80px; text-align: center; }
-  .artist { padding-top: 98px; padding-bottom: 72px; }
-  .identity { padding-top: 64px; }
+  .artist { padding-top: 82px; padding-bottom: 0; }
+  .identity { padding-top: 44px; }
   .section-kicker, .artist-copy .eyebrow, .identity-copy .eyebrow, .rider-copy .eyebrow { justify-content: center; }
   .section-kicker { margin-bottom: 30px; }
   .artist-layout { gap: 0; }
   .identity-layout, .rider-layout { gap: 35px; }
-  .artist-copy { position: relative; z-index: 1; order: 0; }
+  .artist-copy { position: relative; z-index: 1; order: -1; }
   .artist-copy, .identity-copy, .rider-copy { max-width: 540px; margin: 0 auto; }
   .artist h2, .identity h2, .rider h2 { font-size: clamp(2.65rem, 10.8vw, 4.9rem); }
   .artist-lead, .artist-body, .identity-description, .rider-description { margin-right: auto; margin-left: auto; }
@@ -402,7 +402,7 @@ h1 em, h2 em { color: var(--yellow); font-style: normal; }
   .artist-stats > div { min-height: 104px; padding: 17px 19px; }
   .artist-stats .career-card strong { font-size: 2rem; }
   .artist-stats .repertoire-line strong { font-size: 1rem; }
-  .artist-photo-wrap { width: min(calc(100% + 26px), 420px); justify-self: center; margin: 0 0 -34px; }
+  .artist-photo-wrap { width: min(calc(100% + 26px), 420px); justify-self: center; margin: 34px 0 0; }
   .led-scene { min-height: 340px; }
   .led-scene img { width: min(72%, 340px); }
   .artist-quote { display: none; }
