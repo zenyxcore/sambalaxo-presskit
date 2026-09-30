@@ -100,9 +100,50 @@ const startAfterFirstGesture = (event) => {
 document.addEventListener("pointerdown", startAfterFirstGesture, true);
 document.addEventListener("keydown", startAfterFirstGesture, true);
 
+const uiHistoryLayers = [];
+const ignoreDetailToggle = new Set();
+let uiLayerSequence = 0;
+let closingVideoFromPopstate = false;
+
+const pushUiHistoryLayer = (type, id) => {
+  const token = `sambalaxo-ui-${++uiLayerSequence}`;
+  const currentState = history.state && typeof history.state === "object" ? history.state : {};
+  history.pushState({ ...currentState, sambalaxoUiLayer: token }, "", location.href);
+  uiHistoryLayers.push({ type, id, token });
+};
+
+window.addEventListener("popstate", (event) => {
+  const layer = uiHistoryLayers.at(-1);
+  if (!layer || event.state?.sambalaxoUiLayer === layer.token) return;
+  uiHistoryLayers.pop();
+
+  if (layer.type === "details") {
+    const details = document.getElementById(layer.id);
+    if (details?.open) {
+      ignoreDetailToggle.add(layer.id);
+      details.open = false;
+    }
+    return;
+  }
+
+  if (layer.type === "video") {
+    const dialog = document.getElementById(layer.id);
+    if (dialog?.open) {
+      closingVideoFromPopstate = true;
+      dialog.close();
+    }
+  }
+});
+
 document.querySelectorAll(".stage-board").forEach((details) => {
   details.addEventListener("toggle", () => {
-    if (!details.open) return;
+    if (!details.open) {
+      if (ignoreDetailToggle.delete(details.id)) return;
+      const layer = uiHistoryLayers.at(-1);
+      if (layer?.type === "details" && layer.id === details.id) history.back();
+      return;
+    }
+    pushUiHistoryLayer("details", details.id);
     const preview = details.querySelector(".stage-preview");
     if (preview && !preview.src) preview.src = preview.dataset.src;
   });
@@ -125,6 +166,7 @@ document.querySelectorAll(".format-links a[data-reel]").forEach((link) => {
     videoFrame.src = `https://www.instagram.com/reel/${encodeURIComponent(reel)}/embed/`;
     videoFallback.href = link.href;
     resumeMusicAfterVideo = Boolean(audio && !musicPausedByChoice && (!audio.paused || autoplayNeedsGesture));
+    pushUiHistoryLayer("video", videoDialog.id);
     videoDialog.showModal();
     if (resumeMusicAfterVideo) audio.pause();
   });
@@ -136,6 +178,8 @@ videoDialog?.addEventListener("click", (event) => {
 });
 videoDialog?.addEventListener("close", () => {
   videoFrame?.removeAttribute("src");
+  if (closingVideoFromPopstate) closingVideoFromPopstate = false;
+  else if (uiHistoryLayers.at(-1)?.type === "video") history.back();
   if (!resumeMusicAfterVideo || !audio) return;
   resumeMusicAfterVideo = false;
   playMusic({ userInitiated: true });
