@@ -76,10 +76,10 @@
           <div class="hero-formats reveal">
             <span class="formats-title">TIPOS DE SHOW</span>
             <div class="format-links">
-              <a href="https://www.instagram.com/reel/DU4AJU3CdEl/?stkn=ZnR1MXRvN3czOXp4" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6"/></svg><span>Prefeitura</span></a>
-              <a href="https://instagram.com/reel/DZGmY89M70o/?stkn=MWZiZXg4MTJyb2o5cQ==" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.6-8-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.4-8 10-8 10Z"/></svg><span>Casamento</span></a>
-              <a href="https://www.instagram.com/reel/DQMy8BtCWX2/?stkn=d2l2bXFqMWYyZWRl" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3"/></svg><span>360 Graus</span></a>
-              <a href="https://www.instagram.com/reel/DGzYxibsXUn/?stkn=MXRmcXk4ZzlxYXZ0eg==" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V8l7-4 7 4v12M9 20v-6h6v6"/><path d="M3 8h18"/></svg><span>Palco</span></a>
+              <a href="https://www.instagram.com/reel/DU4AJU3CdEl/?stkn=ZnR1MXRvN3czOXp4" data-reel="DU4AJU3CdEl" data-format="Prefeitura" aria-haspopup="dialog" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6"/></svg><span class="format-copy"><strong>Prefeitura</strong><small><img src="/assets/instagram.svg" alt="" /> Assistir</small></span><span class="format-play" aria-hidden="true">▶</span></a>
+              <a href="https://instagram.com/reel/DZGmY89M70o/?stkn=MWZiZXg4MTJyb2o5cQ==" data-reel="DZGmY89M70o" data-format="Casamento" aria-haspopup="dialog" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.6-8-10a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.4-8 10-8 10Z"/></svg><span class="format-copy"><strong>Casamento</strong><small><img src="/assets/instagram.svg" alt="" /> Assistir</small></span><span class="format-play" aria-hidden="true">▶</span></a>
+              <a href="https://www.instagram.com/reel/DQMy8BtCWX2/?stkn=d2l2bXFqMWYyZWRl" data-reel="DQMy8BtCWX2" data-format="360 Graus" aria-haspopup="dialog" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3"/></svg><span class="format-copy"><strong>360 Graus</strong><small><img src="/assets/instagram.svg" alt="" /> Assistir</small></span><span class="format-play" aria-hidden="true">▶</span></a>
+              <a href="https://www.instagram.com/reel/DGzYxibsXUn/?stkn=MXRmcXk4ZzlxYXZ0eg==" data-reel="DGzYxibsXUn" data-format="Palco" aria-haspopup="dialog" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V8l7-4 7 4v12M9 20v-6h6v6"/><path d="M3 8h18"/></svg><span class="format-copy"><strong>Palco</strong><small><img src="/assets/instagram.svg" alt="" /> Assistir</small></span><span class="format-play" aria-hidden="true">▶</span></a>
             </div>
           </div>
           <div class="hero-signature reveal"><span class="signature-line"></span><span>Reinaldinho <b>•</b> A Nave do Amor</span></div>
@@ -209,5 +209,15 @@
         <span class="connect-side-note" aria-hidden="true">A NAVE DO AMOR</span>
       </section>
     </main>
+    <dialog class="video-dialog" id="show-video-dialog" aria-labelledby="show-video-title">
+      <div class="video-dialog-card">
+        <div class="video-dialog-heading">
+          <div><span>VÍDEO DE SHOW</span><h2 id="show-video-title">Sambalaxo ao vivo</h2></div>
+          <button class="video-dialog-close" type="button" aria-label="Fechar vídeo">×</button>
+        </div>
+        <iframe class="video-dialog-frame" title="Vídeo do Sambalaxo no Instagram" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <a class="video-dialog-fallback" href="#" target="_blank" rel="noopener noreferrer">Se o vídeo não carregar, abrir no Instagram</a>
+      </div>
+    </dialog>
   </body>
 </html>

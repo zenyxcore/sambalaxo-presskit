@@ -66,8 +66,8 @@ audio?.addEventListener("pause", syncMusicControls);
 audio?.addEventListener("volumechange", syncMusicControls);
 
 if (audio) {
-  audio.muted = true;
-  audio.play().catch(() => syncMusicControls());
+  audio.muted = false;
+  audio.play().then(syncMusicControls).catch(syncMusicControls);
   syncMusicControls();
 }
 
@@ -78,6 +78,31 @@ document.querySelectorAll(".stage-board").forEach((details) => {
     if (preview && !preview.src) preview.src = preview.dataset.src;
   });
 });
+
+const videoDialog = document.querySelector("#show-video-dialog");
+const videoFrame = videoDialog?.querySelector(".video-dialog-frame");
+const videoTitle = videoDialog?.querySelector("#show-video-title");
+const videoFallback = videoDialog?.querySelector(".video-dialog-fallback");
+
+document.querySelectorAll(".format-links a[data-reel]").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (!videoDialog?.showModal || !videoFrame) return;
+    event.preventDefault();
+    const reel = link.dataset.reel;
+    const format = link.dataset.format || "Sambalaxo ao vivo";
+    videoTitle.textContent = format;
+    videoFrame.title = `Sambalaxo ao vivo · ${format}`;
+    videoFrame.src = `https://www.instagram.com/reel/${encodeURIComponent(reel)}/embed/`;
+    videoFallback.href = link.href;
+    videoDialog.showModal();
+  });
+});
+
+videoDialog?.querySelector(".video-dialog-close")?.addEventListener("click", () => videoDialog.close());
+videoDialog?.addEventListener("click", (event) => {
+  if (event.target === videoDialog) videoDialog.close();
+});
+videoDialog?.addEventListener("close", () => videoFrame?.removeAttribute("src"));
 
 const heroVideo = document.querySelector(".hero-video");
 const motionQuery = window.matchMedia("(max-width: 760px) and (prefers-reduced-motion: no-preference)");
