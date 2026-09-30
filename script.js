@@ -67,7 +67,11 @@ audio?.addEventListener("volumechange", syncMusicControls);
 
 if (audio) {
   audio.muted = false;
-  audio.play().then(syncMusicControls).catch(syncMusicControls);
+  audio.play().then(syncMusicControls).catch(() => {
+    // Navegadores bloqueiam autoplay audível sem interação; manter a faixa e o progresso ativos em modo silencioso.
+    audio.muted = true;
+    audio.play().then(syncMusicControls).catch(syncMusicControls);
+  });
   syncMusicControls();
 }
 
@@ -83,6 +87,7 @@ const videoDialog = document.querySelector("#show-video-dialog");
 const videoFrame = videoDialog?.querySelector(".video-dialog-frame");
 const videoTitle = videoDialog?.querySelector("#show-video-title");
 const videoFallback = videoDialog?.querySelector(".video-dialog-fallback");
+let resumeMusicAfterVideo = false;
 
 document.querySelectorAll(".format-links a[data-reel]").forEach((link) => {
   link.addEventListener("click", (event) => {
@@ -94,7 +99,9 @@ document.querySelectorAll(".format-links a[data-reel]").forEach((link) => {
     videoFrame.title = `Sambalaxo ao vivo · ${format}`;
     videoFrame.src = `https://www.instagram.com/reel/${encodeURIComponent(reel)}/embed/`;
     videoFallback.href = link.href;
+    resumeMusicAfterVideo = Boolean(audio && !audio.paused);
     videoDialog.showModal();
+    if (resumeMusicAfterVideo) audio.pause();
   });
 });
 
@@ -102,7 +109,12 @@ videoDialog?.querySelector(".video-dialog-close")?.addEventListener("click", () 
 videoDialog?.addEventListener("click", (event) => {
   if (event.target === videoDialog) videoDialog.close();
 });
-videoDialog?.addEventListener("close", () => videoFrame?.removeAttribute("src"));
+videoDialog?.addEventListener("close", () => {
+  videoFrame?.removeAttribute("src");
+  if (!resumeMusicAfterVideo || !audio) return;
+  resumeMusicAfterVideo = false;
+  audio.play().then(syncMusicControls).catch(syncMusicControls);
+});
 
 const heroVideo = document.querySelector(".hero-video");
 const motionQuery = window.matchMedia("(max-width: 760px) and (prefers-reduced-motion: no-preference)");
