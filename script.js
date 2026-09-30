@@ -29,6 +29,23 @@ const audio = document.querySelector("#site-audio");
 const musicPlayer = document.querySelector(".music-player");
 const musicToggle = document.querySelector("#music-toggle");
 const muteToggle = document.querySelector("#mute-toggle");
+let autoplayNeedsGesture = false;
+let musicPausedByChoice = false;
+
+const playMusic = async ({ userInitiated = false } = {}) => {
+  if (!audio) return false;
+  try {
+    await audio.play();
+    autoplayNeedsGesture = false;
+    if (userInitiated) musicPausedByChoice = false;
+    syncMusicControls();
+    return true;
+  } catch {
+    if (!userInitiated) autoplayNeedsGesture = true;
+    syncMusicControls();
+    return false;
+  }
+};
 
 const updateMusicProgress = () => {
   if (!audio || !progressFill || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
@@ -47,9 +64,11 @@ const syncMusicControls = () => {
 
 musicToggle?.addEventListener("click", async () => {
   if (!audio) return;
-  if (audio.paused) {
-    try { await audio.play(); } catch { /* O controle continua disponível se o navegador bloquear o áudio. */ }
-  } else audio.pause();
+  if (audio.paused) await playMusic({ userInitiated: true });
+  else {
+    musicPausedByChoice = true;
+    audio.pause();
+  }
   syncMusicControls();
 });
 
@@ -67,13 +86,19 @@ audio?.addEventListener("volumechange", syncMusicControls);
 
 if (audio) {
   audio.muted = false;
-  audio.play().then(syncMusicControls).catch(() => {
-    // Navegadores bloqueiam autoplay audível sem interação; manter a faixa e o progresso ativos em modo silencioso.
-    audio.muted = true;
-    audio.play().then(syncMusicControls).catch(syncMusicControls);
-  });
+  audio.volume = 1;
+  playMusic();
   syncMusicControls();
 }
+
+const startAfterFirstGesture = (event) => {
+  if (!autoplayNeedsGesture || musicPausedByChoice || !audio?.paused) return;
+  if (event.target instanceof Element && event.target.closest("#music-toggle, #mute-toggle, .format-links a[data-reel], .video-dialog")) return;
+  playMusic({ userInitiated: true });
+};
+
+document.addEventListener("pointerdown", startAfterFirstGesture, true);
+document.addEventListener("keydown", startAfterFirstGesture, true);
 
 document.querySelectorAll(".stage-board").forEach((details) => {
   details.addEventListener("toggle", () => {
@@ -99,7 +124,7 @@ document.querySelectorAll(".format-links a[data-reel]").forEach((link) => {
     videoFrame.title = `Sambalaxo ao vivo · ${format}`;
     videoFrame.src = `https://www.instagram.com/reel/${encodeURIComponent(reel)}/embed/`;
     videoFallback.href = link.href;
-    resumeMusicAfterVideo = Boolean(audio && !audio.paused);
+    resumeMusicAfterVideo = Boolean(audio && !musicPausedByChoice && (!audio.paused || autoplayNeedsGesture));
     videoDialog.showModal();
     if (resumeMusicAfterVideo) audio.pause();
   });
@@ -113,7 +138,7 @@ videoDialog?.addEventListener("close", () => {
   videoFrame?.removeAttribute("src");
   if (!resumeMusicAfterVideo || !audio) return;
   resumeMusicAfterVideo = false;
-  audio.play().then(syncMusicControls).catch(syncMusicControls);
+  playMusic({ userInitiated: true });
 });
 
 const heroVideo = document.querySelector(".hero-video");
